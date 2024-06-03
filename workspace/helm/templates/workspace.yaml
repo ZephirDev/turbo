@@ -1,0 +1,37 @@
+{{ $name := "workspace" }}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ $name }}"
+  namespace: "{{ .Release.Namespace }}"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "{{ $name }}"
+  template:
+    metadata:
+      labels:
+        app: "{{ $name }}"
+    spec:
+      {{ if .Values.docker_config }}
+      imagePullSecrets:
+        - name: docker-config
+      {{ end }}
+      volumes:
+        - name: tmp
+          hostPath:
+            path: "{{ .Values.workspace.cache_directory }}"
+            type: Directory
+      containers:
+        - name: workspace
+          image: "{{ .Values.workspace.image }}:{{ .Values.workspace.tag }}"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 2222
+              hostPort: {{ .Values.workspace.node_port }}
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp

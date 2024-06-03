@@ -1,0 +1,11 @@
+{{ if .Values.docker_config }}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: docker-config
+  namespace: "{{ .Release.Namespace }}"
+type: kubernetes.io/dockerconfigjson
+data:
+  .dockerconfigjson: "{{ if kindIs "string" .Values.docker_config }}{{ .Values.docker_config }}{{ else }}{{ toJson .Values.docker_config | b64enc }}{{ end }}"
+{{ end }}
