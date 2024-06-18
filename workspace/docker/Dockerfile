@@ -9,6 +9,7 @@ RUN apk --update add --no-cache \
         cmake \
         openssh-server \
         boost-dev \
+        gtest-dev \
         rsync
 
 ADD ./rootfs /

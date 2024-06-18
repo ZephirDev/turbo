@@ -80,7 +80,6 @@ PermitEmptyPasswords no
 # PAM authentication, then enable this but set PasswordAuthentication
 # and KbdInteractiveAuthentication to 'no'.
 #UsePAM no
-UsePrivilegeSeparation no
 
 #AllowAgentForwarding yes
 # Feel free to re-enable these if your use case requires them.

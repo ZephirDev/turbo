@@ -16,6 +16,7 @@ spec:
       labels:
         app: "{{ $name }}"
     spec:
+      automountServiceAccountToken: false
       {{ if .Values.docker_config }}
       imagePullSecrets:
         - name: docker-config
@@ -35,3 +36,8 @@ spec:
           volumeMounts:
             - name: tmp
               mountPath: /tmp
+          resources:
+            limits:
+              cpu: 4
+              memory: 8Gi
+              ephemeral-storage: "8Gi"

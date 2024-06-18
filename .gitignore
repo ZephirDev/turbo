@@ -145,3 +145,5 @@ _deps
 # End of https://www.toptal.com/developers/gitignore/api/clion+all,c++,cmake
 
 !/workspace/Makefile
+!/Makefile
+/env.mk
