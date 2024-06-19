@@ -147,3 +147,4 @@ _deps
 !/workspace/Makefile
 !/Makefile
 /env.mk
+/reports

@@ -5,6 +5,7 @@ ARG ACCOUNT_PASSWORD="Azerty#2024"
 RUN apk --update add --no-cache \
         bash \
         build-base \
+        pkgconf \
         gdb \
         cmake \
         openssh-server \

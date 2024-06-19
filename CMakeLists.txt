@@ -1,8 +1,20 @@
 cmake_minimum_required(VERSION 3.28)
 project(turbo VERSION 2024.1.0)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
+if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    # using Clang
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    # using GCC
+    add_compile_options(-fmodules-ts)
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
+    # using Intel C++
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    # using Visual Studio C++
+endif()
 
-include(cmake/gtest.cmake)
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    include(cmake/gtest.cmake)
+endif ()
 
-add_executable(turbo main.cpp)
+add_subdirectory(modules)
