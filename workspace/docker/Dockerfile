@@ -11,6 +11,9 @@ RUN apk --update add --no-cache \
         openssh-server \
         boost-dev \
         gtest-dev \
+        cppcheck \
+        gcov \
+        gcovr \
         rsync
 
 ADD ./rootfs /

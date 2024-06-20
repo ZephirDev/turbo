@@ -15,6 +15,8 @@ endif()
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     include(cmake/gtest.cmake)
+    include(cmake/cppcheck.cmake)
+    include(cmake/gcov.cmake)
 endif ()
 
 add_subdirectory(modules)

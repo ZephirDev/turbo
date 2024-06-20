@@ -4,5 +4,6 @@ add_executable(kernel_tests
         CXX_types.cpp)
 target_link_libraries(kernel_tests
   GTest::GTest
-  kernel)
+  kernel
+  ${ADDITIONAL_TEST_BINARY})
 add_test(${PROJECT_NAME}_gtests kernel_tests --gtest_output=xml:${CMAKE_BINARY_DIR}/reports/kernel.xml)

@@ -12,6 +12,7 @@ add_library(kernel SHARED
         src/turbo/kernel/types/visibility.hpp
         src/turbo/kernel/utils/visibility.cpp
         src/turbo/kernel/utils/visibility.hpp)
+target_link_libraries(kernel ${ADDITIONAL_PROD_LIB})
 
 if (CMAKE_TESTING_ENABLED)
     add_subdirectory(tests)
